@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
-import { Code, Share2, TrendingUp, ArrowRight, Instagram, Facebook, Linkedin, Youtube, Chrome, Twitter, RotateCw, Users, Target, Search, Mail, Star, Globe, BarChart3, FileText, Image, CheckCircle } from "lucide-react";
+import { Code, Share2, TrendingUp, ArrowRight, Instagram, Facebook, Linkedin, Youtube, Chrome, Twitter, ExternalLink, icons } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import portfolioImage1 from "@/assets/Web.png";
+import portfolioImage2 from "@/assets/Social.png";
+import portfolioImage3 from "@/assets/PM.png";
+import { FaShopify, FaSquarespace, FaWix, FaCode, FaWordpress } from "react-icons/fa";
+import { SiGhost, SiGoogleanalytics, SiGoogleads } from "react-icons/si";
+import { FaInstagram, FaFacebookF, FaLinkedin, FaXTwitter, FaYoutube, FaTiktok,FaPinterestP, FaSnapchat, FaMeta} from "react-icons/fa6";
+import { RiMiniProgramFill } from "react-icons/ri";
+import { TbSeo } from "react-icons/tb";
+import { MdEmail, MdSms } from "react-icons/md";
 
 const services = [
   {
@@ -42,6 +51,76 @@ const services = [
     ],
     platforms: [Chrome, Facebook, Instagram, Linkedin],
     gradient: "from-primary via-accent to-primary"
+  }
+];
+
+const portfolioItems = [
+  {
+    id: 1,
+    title: "Website Development",
+    category: "Website Development",
+    description: "We create stunning, functional websites that drive results. Our team specializes in both platform-based and custom solutions, ensuring your digital presence stands out.",
+    image: portfolioImage1,
+    results: [
+      { metric: "WordpressImg", value: "+340%" },
+      { metric: "Revenue Growth", value: "$2.1M" },
+      { metric: "Page Speed", value: "+85%" }
+    ],
+    icons: [
+      { Icon: FaWordpress, key: "WordPress" },
+      { Icon: FaShopify, key: "Shopify" },
+      { Icon: SiGhost, key: "Ghost" },
+      { Icon: FaSquarespace, key: "Squarespace" },
+      { Icon: FaWix, key: "Wix" },
+      { Icon: FaCode, key: "Custom Code" },
+    ],
+    tags: ["Custom Web Applications", "E-commerce Solutions", "Responsive Design", "SEO Optimization"]
+  },
+  {
+    id: 2,
+    title: "Social Media Management",
+    category: "Social Media Management",
+    description: "We help brands build meaningful connections through strategic social media management and engaging content creation that resonates with your audience.",
+    image: portfolioImage2,
+    results: [
+      { metric: "Follower Growth", value: "+450%" },
+      { metric: "Engagement Rate", value: "+280%" },
+      { metric: "Lead Generation", value: "+190%" }
+    ],
+   icons: [
+      { Icon: FaInstagram, key: "Instagram" },
+      { Icon: FaFacebookF , key: "Facebook" },
+      { Icon: FaLinkedin, key: "Linkedin" },
+      { Icon: FaXTwitter , key: "Twitter" },
+      { Icon: FaYoutube , key: "Youtube" },
+      { Icon: FaTiktok , key: "Tik-Tok" },
+      { Icon: FaPinterestP , key: "Pinterest" },
+      { Icon: FaSnapchat  , key: "Snapchat" },
+    ],
+    tags: ["Content Strategy", "Community Management", "Influencer Marketing", "Analytics & Reporting"]
+  },
+  {
+    id: 3,
+    title: "Performance Marketing",
+    category: "Performance Marketing",
+    description: "We drive measurable results through data-driven marketing strategies and optimized campaigns that deliver real ROI for your business.",
+    image: portfolioImage3,
+    results: [
+      { metric: "CPA Reduction", value: "-65%" },
+      { metric: "Qualified Leads", value: "+300%" },
+      { metric: "ROAS", value: "8.2x" }
+    ],
+     icons: [
+      { Icon: SiGoogleads, key: "Google Ads" },
+      { Icon: FaMeta , key: "Meta" },
+      { Icon: FaLinkedin, key: "Linkedin" },
+      { Icon: RiMiniProgramFill , key: "Program" },
+      { Icon: TbSeo , key: "Seo" },
+      { Icon: MdEmail , key: "Email" },
+      { Icon: MdSms , key: "Sms" },
+      { Icon: SiGoogleanalytics  , key: "Analyics" },
+    ],
+    tags: ["PPC Campaigns", "Conversion Optimization", "A/B Testing", "ROI Tracking"]
   }
 ];
 
@@ -134,238 +213,103 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Hub and Spoke Layout */}
-        <div className="mt-24 relative">
-          {/* Top 3 Service Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group"
-              >
-                <div className="card-gradient rounded-2xl p-6 border border-border/50 shadow-card hover:shadow-glow transition-all duration-300 h-full">
-                  {/* Icon */}
-                  <div className="relative mb-4">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-3`}>
-                      <service.icon className="h-6 w-6 text-black" />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
-                  </div>
+<section id="portfolio" className="py-24 px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
 
-                  {/* Content */}
-                  <h3 className="text-lg font-bold text-foreground mb-3 group-hover:gradient-text transition-all duration-300">
-                    {service.title}
+        {/* Portfolio Grid */}
+        <div className="space-y-16">
+          {portfolioItems.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className={`grid lg:grid-cols-2 gap-12 items-center ${
+                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+              }`}
+            >
+              {/* Image */}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className={`relative group ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+              >
+                <div className="relative overflow-hidden rounded-2xl shadow-card">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                </div>
+                
+
+              </motion.div>
+
+              {/* Content */}
+              <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="inline-block px-4 py-2 bg-gradient-secondary rounded-full text-sm font-medium text-black mb-4">
+                    {item.category}
+                  </div>
+                  
+                  <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                    {item.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
-                    {service.description}
+                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                    {item.description}
                   </p>
 
-                  {/* Sub-services */}
-                  <ul className="space-y-1.5 mb-4">
-                    {service.subServices.map((subService, idx) => (
-                      <li key={idx} className="flex items-center text-xs text-muted-foreground">
-                        <div className="w-1 h-1 bg-gradient-primary rounded-full mr-2" />
-                        {subService}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="grid grid-cols-3 gap-6 mb-8 place-items-center">
+                  {item.icons && item.icons.map(({ Icon, key }) => (
+                    <motion.div
+                      key={key}
+                      whileHover={{ scale: 1.2 }}
+                      className="text-2xl font-bold gradient-text mb-1 flex flex-col items-center justify-center"
+                    >
+                      <Icon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors duration-300" />
+                       <div className="text-sm text-muted-foreground">
+                          {key}
+                        </div>
+                    </motion.div>
+                  ))}
+                </div>
 
-                  {/* Platform Icons */}
-                  <div className="flex items-center gap-2 mb-4">
-                    {service.platforms.map((PlatformIcon, idx) => (
-                      <motion.div
-                        key={idx}
-                        whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 flex items-center justify-center rounded-md bg-muted/50 hover:bg-primary/20 transition-all duration-300"
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {item.tags.map((tag) => (
+                      <span 
+                        key={tag}
+                        className="px-3 py-1 bg-secondary rounded-full text-xs text-secondary-foreground"
                       >
-                        <PlatformIcon className="h-3 w-3 text-muted-foreground hover:text-primary transition-colors duration-300" />
-                      </motion.div>
+                        {tag}
+                      </span>
                     ))}
                   </div>
 
                   {/* CTA */}
-                  <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <Button 
-                      variant="gradient-outline" 
-                      size="sm"
-                      className="w-full group-hover:bg-white group-hover:text-black"
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                  <Link to={`/case-study/${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <Button variant="gradient-outline" size="lg">
+                      View Full Case Study
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Hub Card - 360° Services */}
-          <div className="flex justify-center mb-16 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              className="cursor-pointer"
-              onClick={() => {
-                // Navigate to full services overview page
-                console.log('Navigate to Full Services Overview');
-              }}
-            >
-              <div className="bg-[#efbf37] text-black px-8 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                360° Services
+                </motion.div>
               </div>
             </motion.div>
-          </div>
-
-          {/* Connecting Lines */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Lines to top row cards */}
-            <div className="absolute top-[25%] left-[16.67%] w-16 h-16">
-              <div className="absolute top-1/2 left-1/2 w-20 h-px bg-[#efbf37]/60 transform -translate-x-1/2 -translate-y-1/2 rotate-[135deg] origin-center"></div>
-            </div>
-            <div className="absolute top-[25%] left-1/2 w-16 h-16">
-              <div className="absolute top-1/2 left-1/2 w-20 h-px bg-[#efbf37]/60 transform -translate-x-1/2 -translate-y-1/2 rotate-90 origin-center"></div>
-            </div>
-            <div className="absolute top-[25%] right-[16.67%] w-16 h-16">
-              <div className="absolute top-1/2 left-1/2 w-20 h-px bg-[#efbf37]/60 transform -translate-x-1/2 -translate-y-1/2 rotate-45 origin-center"></div>
-            </div>
-            
-            {/* Lines to bottom row cards */}
-            <div className="absolute bottom-[25%] left-[16.67%] w-16 h-16">
-              <div className="absolute top-1/2 left-1/2 w-20 h-px bg-[#efbf37]/60 transform -translate-x-1/2 -translate-y-1/2 rotate-[-135deg] origin-center"></div>
-            </div>
-            <div className="absolute bottom-[25%] left-1/2 w-16 h-16">
-              <div className="absolute top-1/2 left-1/2 w-20 h-px bg-[#efbf37]/60 transform -translate-x-1/2 -translate-y-1/2 rotate-[-90deg] origin-center"></div>
-            </div>
-            <div className="absolute bottom-[25%] right-[16.67%] w-16 h-16">
-              <div className="absolute top-1/2 left-1/2 w-20 h-px bg-[#efbf37]/60 transform -translate-x-1/2 -translate-y-1/2 rotate-[-45deg] origin-center"></div>
-            </div>
-          </div>
-
-          {/* Bottom 3 Service Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Existing 3 cards + 3 new cards */}
-            {[
-              {
-                icon: RotateCw,
-                title: "360° Marketing",
-                description: "Complete end-to-end marketing solutions covering every aspect of your digital presence.",
-                subServices: [
-                  "Audience & Strategy",
-                  "Website Optimization", 
-                  "Reputation & Quick Wins",
-                  "Paid Marketing",
-                  "Organic Growth & Engagement",
-                  "Content & Email Marketing"
-                ],
-                platforms: [Target, Users, TrendingUp],
-                gradient: "from-primary via-accent to-primary"
-              },
-              {
-                icon: Globe,
-                title: "E-commerce Marketplace Management", 
-                description: "Complete marketplace management to maximize your online store performance and sales.",
-                subServices: [
-                  "Product Listing & Catalog Management",
-                  "Inventory & Order Management",
-                  "Pricing & Promotions Strategy", 
-                  "Marketplace SEO & Advertising",
-                  "Performance Analytics & Reporting",
-                  "Customer Support & Feedback Management"
-                ],
-                platforms: [Chrome, BarChart3, Search],
-                gradient: "from-accent to-primary"
-              },
-              {
-                icon: FileText,
-                title: "Content Creation",
-                description: "Creative content solutions that engage audiences and drive meaningful connections with your brand.",
-                subServices: [
-                  "Blog & Article Writing",
-                  "Social Media Content Development",
-                  "Video Production & Editing",
-                  "Graphic Design & Infographics", 
-                  "Copywriting (Ads, Websites, Campaigns)",
-                  "Email & Newsletter Content"
-                ],
-                platforms: [Image, FileText, Star],
-                gradient: "from-primary to-accent"
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group"
-              >
-                <div className="card-gradient rounded-2xl p-6 border border-border/50 shadow-card hover:shadow-glow transition-all duration-300 h-full">
-                  {/* Icon */}
-                  <div className="relative mb-4">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-3`}>
-                      <service.icon className="h-6 w-6 text-black" />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-lg font-bold text-foreground mb-3 group-hover:gradient-text transition-all duration-300">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
-                    {service.description}
-                  </p>
-
-                  {/* Sub-services */}
-                  <ul className="space-y-1.5 mb-4">
-                    {service.subServices.map((subService, idx) => (
-                      <li key={idx} className="flex items-center text-xs text-muted-foreground">
-                        <div className="w-1 h-1 bg-gradient-primary rounded-full mr-2" />
-                        {subService}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Platform Icons */}
-                  <div className="flex items-center gap-2 mb-4">
-                    {service.platforms.map((PlatformIcon, idx) => (
-                      <motion.div
-                        key={idx}
-                        whileHover={{ scale: 1.2 }}
-                        className="w-6 h-6 flex items-center justify-center rounded-md bg-muted/50 hover:bg-primary/20 transition-all duration-300"
-                      >
-                        <PlatformIcon className="h-3 w-3 text-muted-foreground hover:text-primary transition-colors duration-300" />
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-').replace(/°/g, '')}`}>
-                    <Button 
-                      variant="gradient-outline" 
-                      size="sm"
-                      className="w-full group-hover:bg-white group-hover:text-black"
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          ))}
         </div>
+
+      </div>
+    </section>
 
         {/* Bottom CTA */}
         <motion.div

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,11 +32,14 @@ const Navigation = () => {
       setIsMobileMenuOpen(false);
     }
   };
+  const navigate = useNavigate();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate("/");
     setIsMobileMenuOpen(false);
   };
+  
 
   return (
     <>
@@ -61,7 +65,7 @@ const Navigation = () => {
               <img 
                 src="/Logo.png" 
                 alt="Oxbow Creatives Logo" 
-                className="h-8 w-8 object-contain"
+                className="h-20 w-20 object-contain"
               />
               <span className="text-2xl font-bold gradient-text">
                 Oxbow Creatives

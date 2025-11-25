@@ -104,7 +104,7 @@ const Hero = () => {
               {/* Analytics Background */}
               <div className="absolute inset-0 opacity-30">
                 <img 
-                  src="@/assets/hero-analytics-bg.png"
+                  src="/assets/hero-analytics-bg.png"
                   alt="Analytics Growth Background" 
                   className="w-full h-full object-contain mix-blend-overlay"
                 />
@@ -113,7 +113,7 @@ const Hero = () => {
               {/* Stats Background - Centered behind floating cards */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-60 opacity-20 blur-sm">
                 <img 
-                  src="@/assets/hero-stats-bg.jpg"
+                  src="@/assets/hero-bg.jpg"
                   alt="Statistics Background" 
                   className="w-full h-full object-cover rounded-2xl"
                 />
