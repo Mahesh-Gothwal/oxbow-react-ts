@@ -19,47 +19,7 @@ const scrollToSection = (href: string) => {
     }
   };
 
-const services = [
-  {
-    icon: Code,
-    title: "Website Development",
-    description: "Custom websites and e-commerce solutions built for performance and conversion.",
-    subServices: [
-      "Custom Design & Development",
-      "E-commerce Solutions",
-      "SEO Optimization",
-      "WordPress & Shopify"
-    ],
-    platforms: [Chrome, Code, TrendingUp],
-    gradient: "from-primary to-accent"
-  },
-  {
-    icon: Share2,
-    title: "Social Media Management",
-    description: "Strategic social media campaigns that build communities and drive engagement.",
-    subServices: [
-      "Content Strategy & Creation",
-      "Community Management",
-      "Influencer Partnerships",
-      "Analytics & Reporting"
-    ],
-    platforms: [Instagram, Facebook, Linkedin, Youtube, Twitter],
-    gradient: "from-accent to-primary"
-  },
-  {
-    icon: TrendingUp,
-    title: "Performance Marketing",
-    description: "Data-driven advertising campaigns optimized for maximum ROI and conversions.",
-    subServices: [
-      "Google Ads & PPC",
-      "Facebook & Instagram Ads",
-      "Conversion Optimization",
-      "Performance Analytics"
-    ],
-    platforms: [Chrome, Facebook, Instagram, Linkedin],
-    gradient: "from-primary via-accent to-primary"
-  }
-];
+
 
 const portfolioItems = [
   {
@@ -152,7 +112,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+      
         
 
 <section id="portfolio" className="py-24 px-6 lg:px-8">
@@ -238,12 +198,12 @@ const Services = () => {
                   </div>
 
                   {/* CTA */}
-                  <Link to={`/case-study/${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <Button variant="gradient-outline" size="lg">
-                      View Full Case Study
+                  {/* <Link to={`/case-study/${item.title.toLowerCase().replace(/\s+/g, '-')}`}> */}
+                    <Button onClick={() => scrollToSection('#contact')} variant="gradient-outline" size="lg">
+                      Know More
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                  </Link>
+                  {/* </Link> */}
                 </motion.div>
               </div>
             </motion.div>
