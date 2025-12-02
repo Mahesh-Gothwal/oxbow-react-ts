@@ -77,7 +77,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Call Us</div>
-                    <div className="text-muted-foreground">+1 (555) 123-4567</div>
+                    <div className="text-muted-foreground">+91-9571366877</div>
                   </div>
                 </motion.div>
 
@@ -90,7 +90,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Reach Us</div>
-                    <div className="text-muted-foreground">hello@agency.com</div>
+                    <div className="text-muted-foreground">support@oxbowcreatives.com</div>
                   </div>
                 </motion.div>
 
@@ -103,7 +103,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Visit Us</div>
-                    <div className="text-muted-foreground">123 Business Ave, NY 10001</div>
+                    <div className="text-muted-foreground">Jaipur, Rajasthan</div>
                   </div>
                 </motion.div>
               </div>
@@ -112,7 +112,7 @@ const ContactForm = () => {
               <div className="p-6 bg-gradient-secondary rounded-2xl border border-border/50">
                 <h4 className="font-semibold text-black mb-2">Quick Response Time</h4>
                 <p className="text-sm text-black/70">
-                  We typically respond to all inquiries within 2-4 hours during business hours.
+                  We typically respond to all inquiries within 10-12 hours during business hours.
                 </p>
               </div>
             </div>

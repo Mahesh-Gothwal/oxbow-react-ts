@@ -6,6 +6,13 @@ import portfolioImage1 from "@/assets/portfolio-1.jpg";
 import portfolioImage2 from "@/assets/portfolio-2.jpg";
 import portfolioImage3 from "@/assets/portfolio-3.jpg";
 
+const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
 const portfolioItems = [
   {
     id: 1,
@@ -206,7 +213,7 @@ const Portfolio = () => {
               Join hundreds of businesses that have transformed their digital presence 
               and achieved remarkable growth with our proven strategies.
             </p>
-            <Button variant="hero" size="lg" className="text-lg px-8 py-6">
+            <Button onClick={() => scrollToSection('#contact')} variant="hero" size="lg" className="text-lg px-8 py-6">
               Start Your Transformation
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

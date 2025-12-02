@@ -12,6 +12,13 @@ import { RiMiniProgramFill } from "react-icons/ri";
 import { TbSeo } from "react-icons/tb";
 import { MdEmail, MdSms } from "react-icons/md";
 
+const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
 const services = [
   {
     icon: Code,
@@ -146,72 +153,7 @@ const Services = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group"
-            >
-              <div className="card-gradient rounded-2xl p-8 border border-border/50 shadow-card hover:shadow-glow transition-all duration-300 h-full">
-                {/* Icon */}
-                <div className="relative mb-6">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-4`}>
-                    <service.icon className="h-8 w-8 text-black" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                </div>
-
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:gradient-text transition-all duration-300">
-                  {service.title}
-                </h3>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Sub-services */}
-                <ul className="space-y-2 mb-6">
-                  {service.subServices.map((subService, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-gradient-primary rounded-full mr-3" />
-                      {subService}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Platform Icons */}
-                <div className="flex items-center gap-3 mb-8">
-                  {service.platforms.map((PlatformIcon, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ scale: 1.2 }}
-                      className="w-8 h-8 flex items-center justify-center rounded-lg bg-muted/50 hover:bg-primary/20 transition-all duration-300"
-                    >
-                      <PlatformIcon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors duration-300" />
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <Button 
-                    variant="gradient-outline" 
-                    className="w-full group-hover:bg-white group-hover:text-black"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        
 
 <section id="portfolio" className="py-24 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -322,7 +264,7 @@ const Services = () => {
           <p className="text-lg text-muted-foreground mb-6">
             Ready to transform your digital presence?
           </p>
-          <Button variant="hero" size="lg" className="text-lg px-8 py-6">
+          <Button onClick={() => scrollToSection('#contact')} variant="hero" size="lg" className="text-lg px-8 py-6">
             Get Custom Strategy
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

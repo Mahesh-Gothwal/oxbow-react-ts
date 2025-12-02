@@ -97,24 +97,24 @@ const Footer = () => {
                 <div>
                   <p className="text-muted-foreground text-sm mb-1">Phone</p>
                   <a 
-                    href="tel:+15551234567" 
+                    href="tel:+91-9571366877" 
                     className="text-foreground hover:gradient-text transition-colors duration-300"
                   >
-                    +1 (555) 123-4567
+                    +91-9571366877
                   </a>
                 </div>
                 <div>
                   <p className="text-muted-foreground text-sm mb-1">Email</p>
                   <a 
-                    href="mailto:hello@agency.com" 
+                    href="mailto:support@oxbowcreatives.com" 
                     className="text-foreground hover:gradient-text transition-colors duration-300"
                   >
-                    hello@agency.com
+                    support@oxbowcreatives.com
                   </a>
                 </div>
                 <div>
                   <p className="text-muted-foreground text-sm mb-1">Office</p>
-                  <p className="text-foreground">123 Business Ave<br />New York, NY 10001</p>
+                  <p className="text-foreground">Jaipur, Rajasthan</p>
                 </div>
               </div>
             </motion.div>
