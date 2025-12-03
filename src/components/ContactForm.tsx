@@ -19,7 +19,7 @@ const ContactForm = () => {
       setIsSubmitted(true);
       toast({
         title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
+        description: "We'll get back to you within 12-24 hours.",
       });
       
       // Reset form after animation
