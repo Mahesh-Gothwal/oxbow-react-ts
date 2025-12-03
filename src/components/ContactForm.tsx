@@ -1,34 +1,92 @@
+"use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { CheckCircle, Send, Phone, Mail, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { db } from "@/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 12-24 hours.",
-      });
-      
-      // Reset form after animation
-      setTimeout(() => setIsSubmitted(false), 3000);
-    }, 1000);
+  // -------------------------
+  // FORM STATE
+  // -------------------------
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    budget: "",
+    message: "",
+  });
+
+  // Handle all text input fields
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // -------------------------
+  // FORM SUBMIT
+  // -------------------------
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  console.log("Submitted Data:", formData);
+
+  try {
+    // Add document to 'contacts' collection
+    const docRef = await addDoc(collection(db, "contacts"), formData);
+    console.log("Document written with ID:", docRef.id);
+
+    toast({
+      title: "Message sent successfully!",
+      description: "We'll get back to you within 12-24 hours.",
+    });
+
+    setIsSubmitted(true);
+
+    setTimeout(() => setIsSubmitted(false), 3000);
+
+    // Optionally reset the form
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      service: "",
+      budget: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error("Error adding document:", error);
+    toast({
+      title: "Error sending message",
+      description: "Please try again later.",
+      variant: "destructive",
+    });
+  }
+};
+
   return (
-    <section id="contact" className="py-24 px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/20">
+    <section
+      id="contact"
+      className="py-24 px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/20"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -42,7 +100,7 @@ const ContactForm = () => {
             Let's Start Your <span className="gradient-text">Success Story</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to transform your digital presence? Get in touch with our experts 
+            Ready to transform your digital presence? Get in touch with our experts
             for a free consultation and custom strategy proposal.
           </p>
         </motion.div>
@@ -61,7 +119,7 @@ const ContactForm = () => {
                   Get in Touch
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our team is ready to discuss your project and create a tailored 
+                  Our team is ready to discuss your project and create a tailored
                   strategy that drives real results for your business.
                 </p>
               </div>
@@ -146,24 +204,34 @@ const ContactForm = () => {
                 </motion.div>
               )}
 
+              {/* -------------------------
+                  FORM START
+                ------------------------- */}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       First Name *
                     </label>
-                    <Input 
-                      required 
+                    <Input
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
                       className="bg-background border-border focus:border-primary"
                       placeholder="John"
                     />
                   </div>
+
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Last Name *
                     </label>
-                    <Input 
-                      required 
+                    <Input
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      required
                       className="bg-background border-border focus:border-primary"
                       placeholder="Doe"
                     />
@@ -174,9 +242,12 @@ const ContactForm = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Email Address *
                   </label>
-                  <Input 
-                    type="email" 
-                    required 
+                  <Input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="bg-background border-border focus:border-primary"
                     placeholder="john@company.com"
                   />
@@ -186,8 +257,11 @@ const ContactForm = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Phone Number
                   </label>
-                  <Input 
-                    type="tel" 
+                  <Input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     className="bg-background border-border focus:border-primary"
                     placeholder="+1 (555) 123-4567"
                   />
@@ -197,7 +271,12 @@ const ContactForm = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Service Interested In *
                   </label>
-                  <Select required>
+                  <Select
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, service: value })
+                    }
+                    required
+                  >
                     <SelectTrigger className="bg-background border-border">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
@@ -215,7 +294,11 @@ const ContactForm = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Project Budget
                   </label>
-                  <Select>
+                  <Select
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, budget: value })
+                    }
+                  >
                     <SelectTrigger className="bg-background border-border">
                       <SelectValue placeholder="Select budget range" />
                     </SelectTrigger>
@@ -233,7 +316,10 @@ const ContactForm = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Tell us about your project *
                   </label>
-                  <Textarea 
+                  <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     required
                     rows={4}
                     className="bg-background border-border focus:border-primary resize-none"
@@ -241,10 +327,11 @@ const ContactForm = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="lg"
                   className="w-full text-lg py-6"
                   disabled={isSubmitted}
                 >
