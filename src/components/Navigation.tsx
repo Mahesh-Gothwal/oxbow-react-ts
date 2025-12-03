@@ -197,14 +197,14 @@ const Navigation = () => {
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-muted-foreground">Call us</p>
-                <a href="tel:+15551234567" className="text-foreground font-medium">
-                  +1 (555) 123-4567
+                <a href="tel:+91-9571366877" className="text-foreground font-medium">
+                 +91-9571366877
                 </a>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Email us</p>
-                <a href="mailto:hello@agency.com" className="text-foreground font-medium">
-                  hello@agency.com
+                <a href="mailto:support@oxbowcreatives.com" className="text-foreground font-medium">
+                  support@oxbowcreatives.com
                 </a>
               </div>
             </div>
