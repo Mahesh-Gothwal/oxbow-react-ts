@@ -63,12 +63,12 @@ const Hero = () => {
                 </Button>
               </Link>
               
-              <Link to="/process">
+              {/* <Link to="/process">
                 <Button variant="gradient-outline" size="lg" className="text-lg px-8 py-6">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Our Process
                 </Button>
-              </Link>
+              </Link> */}
             </motion.div>
             
             {/* Stats */}

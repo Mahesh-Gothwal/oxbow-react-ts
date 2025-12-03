@@ -131,7 +131,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="text-muted-foreground text-sm mb-4 sm:mb-0"
           >
-            © {currentYear} Digital Marketing Agency. All rights reserved.
+            © {currentYear} Oxbow Creatives | All rights reserved.
           </motion.p>
 
           <div className="flex items-center space-x-6">

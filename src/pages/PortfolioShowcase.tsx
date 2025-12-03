@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Play } from "lucide-react";
-import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Geroo from "@/assets/geroo.jpeg";
@@ -10,7 +7,7 @@ import Tangerine from "@/assets/tangerine.jpg";
 import BareWare from "@/assets/bareware.jpg";
 import BijouBox from "@/assets/bijoubox.jpg";
 
-const ProcessShowcase = () => {
+const PortfolioShowcase = () => {
   const workItems = [
     {
       id: 1,
@@ -149,4 +146,4 @@ const ProcessShowcase = () => {
   );
 };
 
-export default ProcessShowcase;
+export default PortfolioShowcase;

@@ -1,8 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Process from "@/components/Process";
 import Portfolio from "@/components/Portfolio";
+import SuccessStories from "@/components/SuccessStories";
 import Testimonials from "@/components/Testimonials";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import JourneyFlow from "@/components/JourneyFlow";
@@ -15,8 +15,8 @@ const Index = () => {
       <Navigation />
       <Hero />
       <Services />
-      <Process />
       <Portfolio />
+      <SuccessStories />
       <Testimonials />
       <WhyChooseUs />
       <JourneyFlow />

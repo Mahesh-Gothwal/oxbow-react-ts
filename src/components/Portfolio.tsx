@@ -1,63 +1,36 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import portfolioImage1 from "@/assets/portfolio-1.jpg";
-import portfolioImage2 from "@/assets/portfolio-2.jpg";
-import portfolioImage3 from "@/assets/portfolio-3.jpg";
+import { Search, PlaneTakeoff, Rocket, Target } from "lucide-react";
 
-const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-const portfolioItems = [
+const ProcessSteps = [
   {
-    id: 1,
-    title: "E-commerce Revolution",
-    category: "Website Development",
-    description: "Complete e-commerce platform redesign that increased conversions by 340% and revenue by $2.1M annually.",
-    image: portfolioImage1,
-    results: [
-      { metric: "Conversion Rate", value: "+340%" },
-      { metric: "Revenue Growth", value: "$2.1M" },
-      { metric: "Page Speed", value: "+85%" }
-    ],
-    tags: ["Shopify", "Custom Design", "Performance"]
+    icon: Search,
+    title: "Discovery",
+    description: "We dive deep into your business, target audience, and competitive landscape to understand your unique challenges and opportunities.",
+    features: ["Market Research", "Competitor Analysis", "Audience Insights", "Goal Setting"]
   },
   {
-    id: 2,
-    title: "Social Media Expertise",
-    category: "Social Media Expertise",
-    description: "Multi-platform social strategy that grew followers by 450% and engagement rates by 280% in 6 months.",
-    image: portfolioImage2,
-    results: [
-      { metric: "Follower Growth", value: "+450%" },
-      { metric: "Engagement Rate", value: "+280%" },
-      { metric: "Lead Generation", value: "+190%" }
-    ],
-    tags: ["Instagram", "Facebook", "LinkedIn"]
+    icon: PlaneTakeoff,
+    title: "Planning", 
+    description: "Based on our findings, we create a comprehensive strategy tailored to your specific goals with clear timelines and measurable KPIs.",
+    features: ["Strategic Planning", "Content Calendar", "Campaign Design", "Resource Allocation"]
   },
   {
-    id: 3,
-    title: "PPC Performance Boost",
-    category: "Performance Marketing",
-    description: "Strategic PPC campaign optimization that reduced cost-per-acquisition by 65% while tripling qualified leads.",
-    image: portfolioImage3,
-    results: [
-      { metric: "CPA Reduction", value: "-65%" },
-      { metric: "Qualified Leads", value: "+300%" },
-      { metric: "ROAS", value: "8.2x" }
-    ],
-    tags: ["Google Ads", "Meta Ads", "Analytics"]
+    icon: Rocket,
+    title: "Implementation",
+    description: "Our expert team executes the strategy with precision, launching campaigns and implementing solutions across all chosen channels.",
+    features: ["Campaign Launch", "Content Creation", "Technical Implementation", "Quality Assurance"]
+  },
+  {
+    icon: Target,
+    title: "Optimization",
+    description: "We continuously monitor performance, analyze data, and optimize campaigns to ensure maximum ROI and sustainable growth.",
+    features: ["Performance Monitoring", "A/B Testing", "Data Analysis", "Continuous Improvement"]
   }
 ];
 
-const Portfolio = () => {
+const Process = () => {
   return (
-    <section id="portfolio" className="py-24 px-6 lg:px-8">
+    <section id="process" className="py-24 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -68,155 +41,97 @@ const Portfolio = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6">
-            Success <span className="gradient-text">Stories</span>
+            Our <span className="gradient-text">Process</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Real results from real clients. See how we've transformed businesses 
-            across industries with strategic digital marketing solutions.
+            A proven methodology that delivers consistent results through strategic planning, 
+            flawless execution, and continuous optimization.
           </p>
         </motion.div>
 
-        {/* Portfolio Grid */}
-        <div className="space-y-16">
-          {portfolioItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-              }`}
-            >
-              {/* Image */}
+        {/* Process Steps */}
+        <div className="relative">
+          {/* Connection Line - only connects the circles */}
+          <div className="hidden lg:block absolute top-12 left-1/8 right-1/8 h-0.5 bg-primary opacity-30 transform -translate-y-1/2" />
+          
+          <div className="grid lg:grid-cols-4 gap-8 lg:gap-4 items-stretch">
+            {ProcessSteps.map((step, index) => (
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                className={`relative group ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+                key={step.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="relative"
               >
-                <div className="relative overflow-hidden rounded-2xl shadow-card">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Overlay Content */}
-                  <div className="absolute bottom-6 left-6 right-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <Link to={`/case-study/${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                      <Button variant="hero-black" size="sm">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        View Case Study
-                      </Button>
-                    </Link>
-                  </div>
+                {/* Step Number */}
+                <div className="relative z-10 w-12 h-12 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground">
+                  Step {index + 1}
                 </div>
-                
-                {/* Floating Results Cards */}
-                <div className="absolute -top-4 -right-4 space-y-3">
-                  {item.results.slice(0, 2).map((result, idx) => (
-                    <motion.div
-                      key={result.metric}
-                      animate={{ 
-                        y: [0, -10, 0],
-                        rotate: [0, 2, 0]
-                      }}
-                      transition={{ 
-                        duration: 4 + idx,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: idx * 0.5
-                      }}
-                      className="bg-gradient-card p-3 rounded-xl border border-border/50 shadow-card backdrop-blur-sm"
-                    >
-                      <div className="text-lg font-bold gradient-text">{result.value}</div>
-                      <div className="text-xs text-muted-foreground">{result.metric}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
 
-              {/* Content */}
-              <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                {/* Card */}
                 <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  className="card-gradient rounded-xl p-4 border border-border/50 shadow-card transition-all duration-300 text-center h-full flex flex-col"
                 >
-                  <div className="inline-block px-4 py-2 bg-gradient-secondary rounded-full text-sm font-medium text-black mb-4">
-                    {item.category}
+                  {/* Icon */}
+                  <div className="w-10 h-10 mx-auto mb-3 bg-secondary rounded-lg flex items-center justify-center">
+                    <step.icon className="h-5 w-5 text-primary" />
                   </div>
-                  
-                  <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                    {item.title}
+
+                  {/* Content */}
+                  <h3 className="text-lg font-bold text-foreground mb-2">
+                    {step.title}
                   </h3>
                   
-                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                    {item.description}
+                  <p className="text-muted-foreground mb-3 leading-relaxed text-xs">
+                    {step.description}
                   </p>
 
-                  {/* Results Grid */}
-                  <div className="grid grid-cols-3 gap-6 mb-8">
-                    {item.results.map((result, idx) => (
-                      <div key={result.metric} className="text-center">
-                        <div className="text-2xl font-bold gradient-text mb-1">
-                          {result.value}
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          {result.metric}
-                        </div>
-                      </div>
+                  {/* Features */}
+                  <ul className="space-y-1 mt-auto">
+                    {step.features.map((feature, idx) => (
+                      <li key={idx} className="text-xs text-muted-foreground flex items-center justify-center">
+                        <div className="w-1 h-1 bg-primary rounded-full mr-1.5" />
+                        {feature}
+                      </li>
                     ))}
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {item.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-3 py-1 bg-secondary rounded-full text-xs text-secondary-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <Link to={`/case-study/${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                    <Button variant="gradient-outline" size="lg">
-                      View Full Case Study
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                  </ul>
                 </motion.div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Arrow for mobile */}
+                {index < ProcessSteps.length - 1 && (
+                  <div className="lg:hidden flex justify-center mt-6 mb-2">
+                    <div className="w-0.5 h-8 bg-primary opacity-50" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* Timeline Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-20"
+          className="mt-24 text-center"
         >
-          <div className="bg-gradient-card rounded-2xl p-8 lg:p-12 border border-border/50 shadow-card">
-            <h3 className="text-3xl font-bold text-foreground mb-4">
-              Ready to Be Our Next Success Story?
-            </h3>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join hundreds of businesses that have transformed their digital presence 
-              and achieved remarkable growth with our proven strategies.
-            </p>
-            <Button onClick={() => scrollToSection('#contact')} variant="hero" size="lg" className="text-lg px-8 py-6">
-              Start Your Transformation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="p-6 card-gradient rounded-2xl border border-border/50">
+              <div className="text-3xl font-bold gradient-text mb-2">7-14 Days</div>
+              <div className="text-sm text-muted-foreground">Customised Strategic Development</div>
+            </div>
+            <div className="p-6 card-gradient rounded-2xl border border-border/50">
+              <div className="text-3xl font-bold gradient-text mb-2">30-60 Days</div>
+              <div className="text-sm text-muted-foreground">Full Implementation</div>
+            </div>
+            <div className="p-6 card-gradient rounded-2xl border border-border/50">
+              <div className="text-3xl font-bold gradient-text mb-2">90+ Days</div>
+              <div className="text-sm text-muted-foreground">Measurable Results</div>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -224,4 +139,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Process;

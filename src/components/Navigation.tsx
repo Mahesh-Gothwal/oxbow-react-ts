@@ -13,33 +13,32 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Portfolio', href: '/process' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' }
+    { name: "Services", href: "#services" },
+    { name: "Process", href: "#process" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   };
   const navigate = useNavigate();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     navigate("/");
     setIsMobileMenuOpen(false);
   };
-  
 
   return (
     <>
@@ -48,9 +47,9 @@ const Navigation = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-background/95 backdrop-blur-md border-b border-border/50 shadow-card' 
-            : 'bg-transparent'
+          isScrolled
+            ? "bg-background/95 backdrop-blur-md border-b border-border/50 shadow-card"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -62,9 +61,9 @@ const Navigation = () => {
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-3 cursor-pointer"
             >
-              <img 
-                src="/Logo.png" 
-                alt="Oxbow Creatives Logo" 
+              <img
+                src="/Logo.png"
+                alt="Oxbow Creatives Logo"
                 className="h-20 w-20 object-contain"
               />
               <span className="text-2xl font-bold gradient-text">
@@ -77,7 +76,14 @@ const Navigation = () => {
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => {
+                    if (item.href.startsWith("#")) {
+                      scrollToSection(item.href);
+                    } else {
+                      navigate(item.href);
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -97,9 +103,9 @@ const Navigation = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="hidden lg:block"
             >
-              <Button 
-                variant="gradient" 
-                onClick={() => scrollToSection('#contact')}
+              <Button
+                variant="gradient"
+                onClick={() => scrollToSection("#contact")}
                 className="font-semibold"
               >
                 Contact Us
@@ -115,7 +121,11 @@ const Navigation = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-secondary text-foreground"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </motion.button>
           </div>
         </div>
@@ -123,14 +133,14 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       <motion.div
-        initial={{ opacity: 0, x: '100%' }}
-        animate={{ 
+        initial={{ opacity: 0, x: "100%" }}
+        animate={{
           opacity: isMobileMenuOpen ? 1 : 0,
-          x: isMobileMenuOpen ? '0%' : '100%'
+          x: isMobileMenuOpen ? "0%" : "100%",
         }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed top-0 right-0 bottom-0 w-80 bg-background/95 backdrop-blur-md border-l border-border/50 shadow-2xl z-50 lg:hidden ${
-          isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
         <div className="p-6">
@@ -152,9 +162,9 @@ const Navigation = () => {
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 initial={{ opacity: 0, x: 20 }}
-                animate={{ 
+                animate={{
                   opacity: isMobileMenuOpen ? 1 : 0,
-                  x: isMobileMenuOpen ? 0 : 20
+                  x: isMobileMenuOpen ? 0 : 20,
                 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="block w-full text-left py-3 px-4 rounded-lg bg-secondary/50 text-foreground hover:bg-gradient-secondary hover:text-primary transition-all duration-300"
@@ -167,16 +177,16 @@ const Navigation = () => {
           {/* Mobile CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ 
+            animate={{
               opacity: isMobileMenuOpen ? 1 : 0,
-              y: isMobileMenuOpen ? 0 : 20
+              y: isMobileMenuOpen ? 0 : 20,
             }}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
-            <Button 
-              variant="hero" 
-              size="lg" 
-              onClick={() => scrollToSection('#contact')}
+            <Button
+              variant="hero"
+              size="lg"
+              onClick={() => scrollToSection("#contact")}
               className="w-full text-lg py-6"
             >
               Contact Us
@@ -187,9 +197,9 @@ const Navigation = () => {
           {/* Mobile Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ 
+            animate={{
               opacity: isMobileMenuOpen ? 1 : 0,
-              y: isMobileMenuOpen ? 0 : 20
+              y: isMobileMenuOpen ? 0 : 20,
             }}
             transition={{ duration: 0.3, delay: 0.5 }}
             className="mt-8 pt-8 border-t border-border/50"
@@ -197,13 +207,19 @@ const Navigation = () => {
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-muted-foreground">Call us</p>
-                <a href="tel:+91-9571366877" className="text-foreground font-medium">
-                 +91-9571366877
+                <a
+                  href="tel:+91-9571366877"
+                  className="text-foreground font-medium"
+                >
+                  +91-9571366877
                 </a>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Email us</p>
-                <a href="mailto:support@oxbowcreatives.com" className="text-foreground font-medium">
+                <a
+                  href="mailto:support@oxbowcreatives.com"
+                  className="text-foreground font-medium"
+                >
                   support@oxbowcreatives.com
                 </a>
               </div>
