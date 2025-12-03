@@ -65,7 +65,7 @@ const Process = () => {
                 className="relative"
               >
                 {/* Step Number */}
-                <div className="relative z-10 w-12 h-12 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground">
+                <div className="relative z-10 w-20 h-12 mx-auto mb-4 bg-primary rounded-md flex items-center justify-center text-sm font-bold text-primary-foreground">
                   Step {index + 1}
                 </div>
 

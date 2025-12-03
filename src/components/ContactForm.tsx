@@ -40,47 +40,44 @@ const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // -------------------------
-  // FORM SUBMIT
-  // -------------------------
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  console.log("Submitted Data:", formData);
+    console.log("Submitted Data:", formData);
 
-  try {
-    // Add document to 'contacts' collection
-    const docRef = await addDoc(collection(db, "contacts"), formData);
-    console.log("Document written with ID:", docRef.id);
+    try {
+      // Add document to 'contacts' collection
+      const docRef = await addDoc(collection(db, "contacts"), formData);
+      console.log("Document written with ID:", docRef.id);
 
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 12-24 hours.",
-    });
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 12-24 hours.",
+      });
 
-    setIsSubmitted(true);
+      setIsSubmitted(true);
 
-    setTimeout(() => setIsSubmitted(false), 3000);
+      setTimeout(() => setIsSubmitted(false), 3000);
 
-    // Optionally reset the form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      service: "",
-      budget: "",
-      message: "",
-    });
-  } catch (error) {
-    console.error("Error adding document:", error);
-    toast({
-      title: "Error sending message",
-      description: "Please try again later.",
-      variant: "destructive",
-    });
-  }
-};
+      // Optionally reset the form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        budget: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error adding document:", error);
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <section
@@ -97,11 +94,12 @@ const ContactForm = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6">
-            Let's Start Your <span className="gradient-text">Success Story</span>
+            Let's Start Your{" "}
+            <span className="gradient-text">Success Story</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to transform your digital presence? Get in touch with our experts
-            for a free consultation and custom strategy proposal.
+            Ready to transform your digital presence? Get in touch with our
+            experts for a free consultation and custom strategy proposal.
           </p>
         </motion.div>
 
@@ -119,8 +117,8 @@ const ContactForm = () => {
                   Get in Touch
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our team is ready to discuss your project and create a tailored
-                  strategy that drives real results for your business.
+                  Our team is ready to discuss your project and create a
+                  tailored strategy that drives real results for your business.
                 </p>
               </div>
 
@@ -147,8 +145,12 @@ const ContactForm = () => {
                     <Mail className="h-6 w-6 text-primary-foreground" />
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">Reach Us</div>
-                    <div className="text-muted-foreground">support@oxbowcreatives.com</div>
+                    <div className="font-semibold text-foreground">
+                      Reach Us
+                    </div>
+                    <div className="text-muted-foreground">
+                      support@oxbowcreatives.com
+                    </div>
                   </div>
                 </motion.div>
 
@@ -160,17 +162,24 @@ const ContactForm = () => {
                     <MapPin className="h-6 w-6 text-primary-foreground" />
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">Visit Us</div>
-                    <div className="text-muted-foreground">Jaipur, Rajasthan</div>
+                    <div className="font-semibold text-foreground">
+                      Visit Us
+                    </div>
+                    <div className="text-muted-foreground">
+                      Jaipur, Rajasthan
+                    </div>
                   </div>
                 </motion.div>
               </div>
 
               {/* Response Time */}
               <div className="p-6 bg-gradient-secondary rounded-2xl border border-border/50">
-                <h4 className="font-semibold text-black mb-2">Quick Response Time</h4>
+                <h4 className="font-semibold text-black mb-2">
+                  Quick Response Time
+                </h4>
                 <p className="text-sm text-black/70">
-                  We typically respond to all inquiries within 10-12 hours during business hours.
+                  We typically respond to all inquiries within 10-12 hours
+                  during business hours.
                 </p>
               </div>
             </div>
@@ -198,8 +207,12 @@ const ContactForm = () => {
                     >
                       <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">Thank You!</h3>
-                    <p className="text-muted-foreground">Your message has been sent successfully.</p>
+                    <h3 className="text-2xl font-bold text-foreground mb-2">
+                      Thank You!
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Your message has been sent successfully.
+                    </p>
                   </div>
                 </motion.div>
               )}
@@ -281,11 +294,19 @@ const ContactForm = () => {
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="website">Website Development</SelectItem>
-                      <SelectItem value="social">Social Media Management</SelectItem>
-                      <SelectItem value="performance">Performance Marketing</SelectItem>
+                      <SelectItem value="website">
+                        Website Development
+                      </SelectItem>
+                      <SelectItem value="social">
+                        Social Media Management
+                      </SelectItem>
+                      <SelectItem value="performance">
+                        Performance Marketing
+                      </SelectItem>
                       <SelectItem value="all">All Services</SelectItem>
-                      <SelectItem value="consultation">Free Consultation</SelectItem>
+                      <SelectItem value="consultation">
+                        Free Consultation
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -347,7 +368,8 @@ const ContactForm = () => {
               </form>
 
               <div className="mt-6 text-center text-xs text-muted-foreground">
-                By submitting this form, you agree to our privacy policy and terms of service.
+                By submitting this form, you agree to our privacy policy and
+                terms of service.
               </div>
             </div>
           </motion.div>
