@@ -4,55 +4,62 @@ import { ArrowLeft, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import portfolioImage1 from "@/assets/Portfolio1.jpeg";
-import portfolioImage2 from "@/assets/Portfolio2.jpeg";
-import portfolioImage3 from "@/assets/Portfolio1.jpeg";
+import Geroo from "@/assets/geroo.jpeg";
+import Malverra from "@/assets/malverra.jpeg";
+import Tangerine from "@/assets/tangerine.jpg";
+import BareWare from "@/assets/bareware.jpg";
+import BijouBox from "@/assets/bijoubox.jpg";
 
 const ProcessShowcase = () => {
   const workItems = [
     {
       id: 1,
-      title: "E-commerce Platform Redesign",
+      title: "Geroo Jaipur",
       category: "Website Development",
-      image: portfolioImage1,
+      image: Geroo,
       description: "Complete redesign and optimization of e-commerce platform",
       tags: ["Website", "Performance", "Social Media", "SEO"]
 
     },
     {
       id: 2,
-      title: "Social Media Campaign",
+      title: "Malverra",
       category: "Social Media Marketing",
-      image: portfolioImage2,
-      description: "Multi-platform social media strategy and content creation"
+      image: Malverra,
+      description: "Multi-platform social media strategy and content creation",
+       tags: ["Website", "Performance", "Social Media", "SEO"]
     },
     {
       id: 3,
-      title: "PPC Campaign Optimization",
+      title: "Bare Ware",
       category: "Performance Marketing",
-      image: portfolioImage3,
-      description: "Strategic PPC campaign management and optimization"
+      image: BareWare,
+      description: "Strategic PPC campaign management and optimization",
+       tags: ["Website", "Performance", "Social Media", "SEO"]
     },
     {
       id: 4,
-      title: "Brand Identity Design",
+      title: "The Bijou Box",
       category: "Content Creation",
-      image: portfolioImage1,
-      description: "Complete brand identity and visual design system"
+      image: BijouBox,
+      description: "Complete brand identity and visual design system",
+       tags: ["Website", "Performance", "Social Media", "SEO"]
     },
     {
       id: 5,
-      title: "Marketplace Management",
+      title: "Tangerine Jewellry",
       category: "E-commerce",
-      image: portfolioImage2,
-      description: "Full marketplace management and optimization"
+      image: Tangerine,
+      description: "Full marketplace management and optimization",
+       tags: ["Website", "Performance", "Social Media", "SEO"]
     },
     {
       id: 6,
-      title: "360° Marketing Strategy",
+      title: "The Bijou Box",
       category: "360° Marketing",
-      image: portfolioImage3,
-      description: "Comprehensive digital marketing strategy and execution"
+      image: BijouBox,
+      description: "Comprehensive digital marketing strategy and execution",
+       tags: ["Website", "Performance", "Social Media", "SEO"]
     }
   ];
 
@@ -103,12 +110,17 @@ const ProcessShowcase = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
+                  {/* Title */}
+                   <h3 className="text-2xl font-bold text-foreground mt-2 group-hover:gradient-text transition-all duration-300 p-2">
+                      {item.title}
+                    </h3>
                   
                   {/* Content */}
-                  <div className="p-6">
-                    <div className="px-3 py-1 bg-gradient-secondary rounded-full text-xs font-medium text-black mb-3 inline-block">
+                  <div className="p-2">
+                    {/* <div className="px-3 py-1 bg-gradient-secondary rounded-full text-xs font-medium text-black mb-3 inline-block">
                       {item.category}
-                    </div>
+                    </div> */}
+
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2">
                       {item.tags && item.tags.map((tag) => (
@@ -118,14 +130,12 @@ const ProcessShowcase = () => {
                           </span>
                       ))}
                     </div>
-                    
-                    <h3 className="text-xl font-bold text-foreground mb-2 group-hover:gradient-text transition-all duration-300">
-                      {item.title}
-                    </h3>
-                    
-                    <p className="text-muted-foreground text-sm">
+                                      
+                    {/* Description */}
+                    {/* <p className="text-muted-foreground text-sm">
                       {item.description}
-                    </p>
+                    </p> */}
+
                   </div>
                 </div>
               </motion.div>
