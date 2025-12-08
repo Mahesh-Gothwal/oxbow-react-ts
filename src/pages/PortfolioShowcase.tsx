@@ -1,65 +1,9 @@
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Geroo from "@/assets/geroo.jpeg";
-import Malverra from "@/assets/malverra.jpeg";
-import Tangerine from "@/assets/tangerine.jpg";
-import BareWare from "@/assets/bareware.jpg";
-import BijouBox from "@/assets/bijoubox.jpg";
+import {workItems} from "@/data/portfolio";
 
 const PortfolioShowcase = () => {
-  const workItems = [
-    {
-      id: 1,
-      title: "Geroo Jaipur",
-      category: "Website Development",
-      image: Geroo,
-      description: "Complete redesign and optimization of e-commerce platform",
-      tags: ["Website", "Performance", "Social Media", "SEO"]
-
-    },
-    {
-      id: 2,
-      title: "Malverra",
-      category: "Social Media Marketing",
-      image: Malverra,
-      description: "Multi-platform social media strategy and content creation",
-       tags: ["Website", "Performance", "Social Media", "SEO"]
-    },
-    {
-      id: 3,
-      title: "Bare Ware",
-      category: "Performance Marketing",
-      image: BareWare,
-      description: "Strategic PPC campaign management and optimization",
-       tags: ["Website", "Performance", "Social Media", "SEO"]
-    },
-    {
-      id: 4,
-      title: "The Bijou Box",
-      category: "Content Creation",
-      image: BijouBox,
-      description: "Complete brand identity and visual design system",
-       tags: ["Website", "Performance", "Social Media", "SEO"]
-    },
-    {
-      id: 5,
-      title: "Tangerine Jewellry",
-      category: "E-commerce",
-      image: Tangerine,
-      description: "Full marketplace management and optimization",
-       tags: ["Website", "Performance", "Social Media", "SEO"]
-    },
-    {
-      id: 6,
-      title: "The Bijou Box",
-      category: "360° Marketing",
-      image: BijouBox,
-      description: "Comprehensive digital marketing strategy and execution",
-       tags: ["Website", "Performance", "Social Media", "SEO"]
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
@@ -108,22 +52,22 @@ const PortfolioShowcase = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   {/* Title */}
-                   <h3 className="text-2xl font-bold text-foreground mt-2 group-hover:gradient-text transition-all duration-300 p-2">
+                   <h3 className="text-2xl font-bold text-foreground mt-2 group-hover:gradient-text transition-all duration-300 px-2">
                       {item.title}
                     </h3>
                   
-                  {/* Content */}
-                  <div className="p-2">
-                    {/* <div className="px-3 py-1 bg-gradient-secondary rounded-full text-xs font-medium text-black mb-3 inline-block">
-                      {item.category}
-                    </div> */}
+                  {/* Niche */}
+                  <div className="p-2 pt-0">
+                    <div className="text-xs uppercase tracking-widest text-yellow-400 py-2">
+                      {item.niche}
+                    </div> 
 
-                    {/* Tags */}
+                    {/* Services */}
                     <div className="flex flex-wrap gap-2">
-                      {item.tags && item.tags.map((tag) => (
+                      {item.services && item.services.map((service) => (
                         <span 
-                          key={tag} className="px-3 py-1 bg-gradient-secondary rounded-full text-xs font-medium text-black mb-3">
-                          {tag}
+                          key={service} className="px-3 py-1 bg-gradient-secondary rounded-full text-xs font-medium text-black mb-3">
+                          {service}
                           </span>
                       ))}
                     </div>
