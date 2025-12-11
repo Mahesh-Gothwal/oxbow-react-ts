@@ -28,7 +28,7 @@ export const workItems = [
     {
       id: 2,
       title: "Bare Wear",
-      niche: "Women Essentials",
+      niche: "Women's Essentials",
       image: BareWear,
       description: "Multi-platform social media strategy and content creation",
       services: [ "Performance", "Retention"]
@@ -52,7 +52,7 @@ export const workItems = [
     {
       id: 5,
       title: "Faries Forever",
-      niche: "Kids Clothing",
+      niche: "Kid's Clothing",
       image: FariesForever,
       description: "Full marketplace management and optimization",
       services: ["Website", "Performance"]
@@ -140,7 +140,7 @@ export const workItems = [
     {
       id: 16,
       title: "Janya's Closet",
-      niche: "Kids Clothing",
+      niche: "Kid's Clothing",
       image: JanyasCloset,
       description: "Comprehensive digital marketing strategy and execution",
       services: ["Website", "Performance", "Social Media", "SEO"]

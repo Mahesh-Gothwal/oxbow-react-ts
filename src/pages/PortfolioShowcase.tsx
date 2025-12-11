@@ -2,11 +2,31 @@ import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import {workItems} from "@/data/portfolio";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const PortfolioShowcase = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
+      <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center space-x-2">
+              <ArrowLeft className="h-5 w-5" />
+              <span className="text-sm font-medium">Back to Home</span>
+            </Link>
+            <div className="flex items-center">
+            <img
+                src="/logo.png"
+                alt="Oxbow Creatives Logo"
+                className="h-20 w-20 object-contain"
+              />
+            <span className="text-xl font-bold gradient-text">Oxbow Creatives</span>
+            </div>
+          </div>
+        </div>
+      </nav>
       
 
       {/* Work Gallery Section */}
@@ -58,7 +78,7 @@ const PortfolioShowcase = () => {
                   
                   {/* Niche */}
                   <div className="p-2 pt-0">
-                    <div className="text-xs uppercase tracking-widest text-yellow-400 py-2">
+                    <div className="text-xs uppercase tracking-widest text-yellow-400 py-2 pb-2.5">
                       {item.niche}
                     </div> 
 

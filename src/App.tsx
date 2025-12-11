@@ -9,6 +9,7 @@ import ServicePage from "./pages/ServicePage";
 import CaseStudy from "./pages/CaseStudy";
 import Clients from "./pages/Clients";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -17,17 +18,21 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+
       <BrowserRouter>
+        {/* ✅ ScrollToTop MUST be inside BrowserRouter */}
+        <ScrollToTop />
+
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<PortfolioShowcase />} />
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/case-study/:caseId" element={<CaseStudy />} />
           <Route path="/clients" element={<Clients />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
     </TooltipProvider>
   </QueryClientProvider>
 );

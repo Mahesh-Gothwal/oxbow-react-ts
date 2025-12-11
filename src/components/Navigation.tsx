@@ -160,7 +160,14 @@ const Navigation = () => {
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => {
+                    if (item.href.startsWith("#")) {
+                      scrollToSection(item.href);
+                    } else {
+                      navigate(item.href);
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{
                   opacity: isMobileMenuOpen ? 1 : 0,
