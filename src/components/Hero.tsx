@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-// import heroImage from "@/assets/hero-bg.jpg";
-// import heroAnalyticsBg from "@/assets/hero-analytics-bg.png";
+import heroImage from "@/assets/hero-bg.jpg";
+import heroAnalyticsBg from "@/assets/hero-analytics-bg.png";
 // import heroStatsBg from "@/assets/hero-stats-bg.jpg";
 import { Button } from "./ui/button";
 
@@ -12,7 +12,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="@/assets/hero-bg.jpg" 
+          src={heroImage} 
           alt="Digital Marketing Background" 
           className="w-full h-full object-cover opacity-30"
         />
@@ -100,24 +100,24 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="relative">
+            <div className="relative min-h-[400px] lg:min-h-[500px]">
               {/* Analytics Background */}
-              <div className="absolute inset-0 opacity-30">
+              <div className="absolute inset-0 opacity-40">
                 <img 
-                  src="/assets/hero-analytics-bg.png"
+                  src={heroAnalyticsBg}
                   alt="Analytics Growth Background" 
-                  className="w-full h-full object-contain mix-blend-overlay"
+                  className="w-full h-full object-contain"
                 />
               </div>
               
               {/* Stats Background - Centered behind floating cards */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-60 opacity-20 blur-sm">
+              {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-60 opacity-20 blur-sm">
                 <img 
-                  src="@/assets/hero-bg.jpg"
+                  src={heroStatsBg}
                   alt="Statistics Background" 
                   className="w-full h-full object-cover rounded-2xl"
                 />
-              </div>
+              </div> */}
               
               {/* Floating Cards */}
               <motion.div

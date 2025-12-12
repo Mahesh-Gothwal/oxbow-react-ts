@@ -14,7 +14,7 @@ const PortfolioShowcase = () => {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
               <ArrowLeft className="h-5 w-5" />
-              <span className="text-sm font-medium">Back to Home</span>
+              <span className="text-sm font-medium block max-sm:hidden">Back to Home</span>
             </Link>
             <div className="flex items-center">
             <img
