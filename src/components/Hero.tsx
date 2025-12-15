@@ -7,6 +7,12 @@ import heroAnalyticsBg from "@/assets/hero-analytics-bg.png";
 import { Button } from "./ui/button";
 
 const Hero = () => {
+   const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -56,12 +62,10 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <Link to="/clients">
-                <Button variant="hero" size="lg" className="text-lg px-8 py-6">
-                  Our Clients
+                <Button onClick={() => scrollToSection("#contact")} variant="hero" size="lg" className="text-lg px-8 py-6">
+                  Let’s Grow Your Brand
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link>
               
               {/* <Link to="/process">
                 <Button variant="gradient-outline" size="lg" className="text-lg px-8 py-6">

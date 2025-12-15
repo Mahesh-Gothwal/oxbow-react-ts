@@ -25,7 +25,7 @@ const portfolioItems = [
   {
     id: 1,
     title: "Website Development",
-    category: "Website Development",
+    category: "Websites That Convert",
     description: "We create stunning, functional websites that drive results. Our team specializes in both platform-based and custom solutions, ensuring your digital presence stands out.",
     image: portfolioImage1,
     results: [
@@ -46,7 +46,7 @@ const portfolioItems = [
   {
     id: 2,
     title: "Social Media Management",
-    category: "Social Media Management",
+    category: "Build. Engage. Convert.",
     description: "We help brands build meaningful connections through strategic social media management and engaging content creation that resonates with your audience.",
     image: portfolioImage2,
     results: [
@@ -69,7 +69,7 @@ const portfolioItems = [
   {
     id: 3,
     title: "Performance Marketing",
-    category: "Performance Marketing",
+    category: "ROI-Driven Campaigns",
     description: "We drive measurable results through data-driven marketing strategies and optimized campaigns that deliver real ROI for your business.",
     image: portfolioImage3,
     results: [
@@ -115,7 +115,7 @@ const Services = () => {
       
         
 
-<section id="portfolio" className="py-24 px-6 lg:px-8">
+<section id="portfolio" className="py-8 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Portfolio Grid */}

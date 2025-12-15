@@ -90,7 +90,7 @@ const Process = () => {
                   </p>
 
                   {/* Features */}
-                  <ul className="space-y-1 mt-auto">
+                  <ul className="space-y-1 mt-auto max-sm:mt-2">
                     {step.features.map((feature, idx) => (
                       <li key={idx} className="text-xs text-muted-foreground flex items-center justify-center">
                         <div className="w-1 h-1 bg-primary rounded-full mr-1.5" />
