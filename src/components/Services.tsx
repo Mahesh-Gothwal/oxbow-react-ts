@@ -93,7 +93,7 @@ const portfolioItems = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 px-6 lg:px-8">
+    <section id="services" className="py-8 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -219,7 +219,7 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-16"
+          className="text-center mt-8"
         >
           <p className="text-lg text-muted-foreground mb-6">
             Ready to transform your digital presence?

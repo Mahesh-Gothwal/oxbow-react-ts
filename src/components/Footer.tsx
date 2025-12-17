@@ -36,15 +36,14 @@ const Footer = () => {
               {/* Social Media */}
               <div className="flex space-x-4">
                 {[
-                  { icon: Facebook, href: "#", label: "Facebook" },
-                  { icon: Twitter, href: "#", label: "Twitter" },
-                  { icon: Instagram, href: "#", label: "Instagram" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Youtube, href: "#", label: "YouTube" }
+                  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61568631520017", label: "Facebook" },
+                  { icon: Instagram, href: "https://www.instagram.com/oxbowcreatives", label: "Instagram" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/company/oxbow-creatives", label: "LinkedIn" }
                 ].map((social) => (
                   <motion.a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-muted-foreground hover:bg-gradient-primary hover:text-primary-foreground transition-all duration-300"
@@ -114,7 +113,11 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-muted-foreground text-sm mb-1">Office</p>
-                  <p className="text-foreground">Jaipur, Rajasthan</p>
+                  <a href="https://maps.app.goo.gl/P8WWJ5KqF71RpwNv7" target="_blank">
+                  <p className="text-foreground">
+                    Shopping Centre Shop No. 5,6, near Durgapura Railway Station, Durgapura, Jaipur, Rajasthan, 302018
+                    </p>
+                    </a>
                 </div>
               </div>
             </motion.div>
@@ -135,7 +138,7 @@ const Footer = () => {
           </motion.p>
 
           <div className="flex items-center space-x-6">
-            <a 
+            {/* <a 
               href="#" 
               className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300"
             >
@@ -146,7 +149,7 @@ const Footer = () => {
               className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300"
             >
               Terms of Service
-            </a>
+            </a> */}
             
             {/* Scroll to Top */}
             <motion.button

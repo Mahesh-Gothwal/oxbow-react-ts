@@ -42,7 +42,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-choose-us" className="py-24 px-6 lg:px-8">
+    <section id="why-choose-us" className="py-8 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -111,7 +111,7 @@ const WhyChooseUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20"
+          className="mt-8"
         >
           <div className="bg-gradient-card rounded-2xl p-8 lg:p-12 border border-border/50 shadow-card text-center relative overflow-hidden">
             {/* Background */}

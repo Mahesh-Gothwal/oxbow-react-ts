@@ -82,7 +82,7 @@ const ContactForm = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/20"
+      className="py-8 px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/20"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -158,6 +158,7 @@ const ContactForm = () => {
                   whileHover={{ x: 10 }}
                   className="flex items-center space-x-4 p-4 card-gradient rounded-xl border border-border/50"
                 >
+                 
                   <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center">
                     <MapPin className="h-6 w-6 text-primary-foreground" />
                   </div>
@@ -165,9 +166,11 @@ const ContactForm = () => {
                     <div className="font-semibold text-foreground">
                       Visit Us
                     </div>
+                     <a href="https://maps.app.goo.gl/P8WWJ5KqF71RpwNv7" target="_blank">
                     <div className="text-muted-foreground">
-                      Jaipur, Rajasthan
+                      Shopping Centre <br/>Shop No. 5,6, near Durgapura Railway Station,<br/> Durgapura, Jaipur, Rajasthan, 302018
                     </div>
+                  </a>
                   </div>
                 </motion.div>
               </div>
